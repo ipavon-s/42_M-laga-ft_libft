@@ -6,7 +6,7 @@
 /*   By: ipavon-s <ipavon-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 17:19:21 by ipavon-s          #+#    #+#             */
-/*   Updated: 2022/10/24 17:22:31 by ipavon-s         ###   ########.fr       */
+/*   Updated: 2022/10/24 17:39:17 by ipavon-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,15 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	c;
+	char	*str;
+	int		i;
 
-	c = (char) n;
-	write (fd, &c, 1);
+	i = 0;
+	str = ft_itoa(n);
+	while (str[i])
+	{
+		write (fd, &str[i], 1);
+		i++;
+	}
 	return (0);
 }

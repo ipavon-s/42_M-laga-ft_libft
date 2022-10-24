@@ -6,13 +6,13 @@
 /*   By: ipavon-s <ipavon-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 12:37:08 by ipavon-s          #+#    #+#             */
-/*   Updated: 2022/10/24 14:30:48 by ipavon-s         ###   ########.fr       */
+/*   Updated: 2022/10/24 17:33:43 by ipavon-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_digit(int n)
+static int	ft_digit(int n)
 {
 	int	count;
 

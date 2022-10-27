@@ -6,7 +6,7 @@
 /*   By: ipavon-s <ipavon-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 13:52:14 by ipavon-s          #+#    #+#             */
-/*   Updated: 2022/10/24 17:04:44 by ipavon-s         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:14:21 by ipavon-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!str)
 		return (NULL);
 	while (i < len)
-		str[i++] = f(i, s[i]);
+	{
+		str[i] = f(i, s[i]);
+		i++;
+	}
 	str[i] = '\0';
 	return (str);
 }

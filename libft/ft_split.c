@@ -6,11 +6,12 @@
 /*   By: ipavon-s <ipavon-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:04:14 by ipavon-s          #+#    #+#             */
-/*   Updated: 2022/10/20 18:54:55 by ipavon-s         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:20:12 by ipavon-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//contador de coincidencias
+#include "libft.h"
+
 static int	ft_count(char const *s, char c)
 {
 	int	i;
@@ -34,81 +35,51 @@ static int	ft_count(char const *s, char c)
 	return (count);
 }
 
-static int	ft_start(const char *s, char c, int i)
+//señala el comienzo de la palabra
+static int	ft_start(const char *s, char c, int k)
 {
-	int			flag;
-
-	flag = i;
-	while (s[i])
+	while (s[k])
 	{
-		if (s[i] != c && flag == 0)
-		{
-			return (i);
-			flag = 1;
-		}
-		if (s[i] == c && flag == 1)
-			flag = 0;
-		i++;
+		if (s[k] != c)
+			return (k);
+		k++;
 	}
 	return (0);
 }
 
-static int	ft_sublen(const char *s, char c, int start)
+//señala el final de la palabra
+static int	ft_end(const char *s, char c, int k)
 {
-	int	i;
-
-	i = 0;
-	while (s[i])
+	while (s[k])
 	{
-		
+		if (s[k] == c || s[k] == '\0')
+			return (k - 1);
+		k++;
 	}
-}
-
-static char	*ft_create(const char *s, char c, int k)
-{
-	int		start;
-	int		len;
-	char	*str;
-	int		flag;
-
-	start = 0;
-	len = 0;
-	flag = k;
-	while (s[i])
-	{
-		if (s[i] != c && flag == 0)
-		{
-			return (i);
-			flag = 1;
-		}
-		if (s[i] == c && flag == 1)
-			flag = 0;
-		i++;
-	}
-	//start = ft_start(*s, c, start);
-	len = ft_sublen(*s, c, start);
-	str = ft_substr(*s, start, len);
-	return (*str);
+	return (0);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**str;
 	int		i;
-	int		k;
+	int		start;
+	int		end;
 
-	n = 0;
-	k = 0;
-	i = ft_count(*s, c);
+	start = 0;
+	end = 0;
+	i = ft_count(s, c);
 	str = (char **) malloc ((i + 1) * sizeof(char *));
 	if (!str)
 		return (NULL);
-	str[i] = '\0';
-	while (i--)
+	str[i] = (char *) '\0';
+	i = 0;
+	while (s[start])
 	{
-		str[k] = ft_create(*s, c, k);
-		//usar la k como flag para marcar el inicio de substr
-		k++;
+		start = ft_start(s, c, start);
+		end = ft_end(s, c, start);
+		str[i++] = ft_substr(s, start, (end - start));
+		start = end + 1;
 	}
-	return (**str);
+	return (str);
 }

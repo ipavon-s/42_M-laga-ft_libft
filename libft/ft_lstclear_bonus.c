@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ipavon-s <ipavon-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 17:12:34 by ipavon-s          #+#    #+#             */
-/*   Updated: 2022/10/25 13:12:41 by ipavon-s         ###   ########.fr       */
+/*   Created: 2022/10/27 13:03:09 by ipavon-s          #+#    #+#             */
+/*   Updated: 2022/10/27 14:07:00 by ipavon-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	int	i;
+	t_list	*aux;
+	t_list	*erase;
 
-	i = 0;
-	while (s[i])
+	aux = *lst;
+	while (aux)
 	{
-		write (fd, &s[i], 1);
-		i++;
+		erase = aux->next;
+		del(aux->content);
+		free(aux);
+		aux = erase;
 	}
-	write (fd, "\n", 1);
 }

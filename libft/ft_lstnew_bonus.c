@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ipavon-s <ipavon-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 17:12:34 by ipavon-s          #+#    #+#             */
-/*   Updated: 2022/10/25 13:12:41 by ipavon-s         ###   ########.fr       */
+/*   Created: 2022/10/25 13:38:23 by ipavon-s          #+#    #+#             */
+/*   Updated: 2022/10/25 14:41:34 by ipavon-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+t_list	*ft_lstnew(void *content)
 {
-	int	i;
+	t_list	*lst;
 
-	i = 0;
-	while (s[i])
-	{
-		write (fd, &s[i], 1);
-		i++;
-	}
-	write (fd, "\n", 1);
+	lst = (t_list *) malloc (sizeof(t_list));
+	if (!lst)
+		return (NULL);
+	lst->content = (void *)content;
+	lst->next = NULL;
+	return (lst);
 }

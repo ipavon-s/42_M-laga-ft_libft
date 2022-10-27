@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ipavon-s <ipavon-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 17:12:34 by ipavon-s          #+#    #+#             */
-/*   Updated: 2022/10/25 13:12:41 by ipavon-s         ###   ########.fr       */
+/*   Created: 2022/10/27 13:04:59 by ipavon-s          #+#    #+#             */
+/*   Updated: 2022/10/27 14:21:43 by ipavon-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int	i;
+	t_list	*pl;
 
-	i = 0;
-	while (s[i])
+	while (lst)
 	{
-		write (fd, &s[i], 1);
-		i++;
+		pl = ft_lstnew((f(lst->content)));
+		if (!pl)
+			ft_lstclear(&lst, del);
+		pl = pl->next;
+		lst = lst->next;
 	}
-	write (fd, "\n", 1);
+	return (pl);
 }

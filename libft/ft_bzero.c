@@ -6,7 +6,7 @@
 /*   By: ipavon-s <ipavon-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:14:43 by ipavon-s          #+#    #+#             */
-/*   Updated: 2022/10/19 11:15:41 by ipavon-s         ###   ########.fr       */
+/*   Updated: 2022/10/27 16:41:49 by ipavon-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,9 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*str;
-
-	str = (unsigned char *)s;
 	while (n--)
 	{
-		*str = '0';
-		str++;
+		*(char *)s = 0;
+		s++;
 	}
-	return (*s);
 }

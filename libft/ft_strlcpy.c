@@ -6,7 +6,7 @@
 /*   By: ipavon-s <ipavon-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 15:41:58 by ipavon-s          #+#    #+#             */
-/*   Updated: 2022/10/19 14:49:29 by ipavon-s         ###   ########.fr       */
+/*   Updated: 2022/10/27 17:06:09 by ipavon-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,16 @@ size_t	ft_strlcpy(char *dst, char *src, size_t size)
 	size_t	c;
 
 	c = 0;
-	while (c < size && src[c] != '\0')
+	if (!src || !dst)
+		return (0);
+	if (size > 0)
 	{
-		dst[c] = src[c];
-		c++;
+		while (c < (size - 1) && src[c] != '\0')
+		{
+			dst[c] = src[c];
+			c++;
+		}
+		dst[c] = '\0';
 	}
-	dst[c] = '\0';
-	return (c);
+	return (ft_strlen(src));
 }

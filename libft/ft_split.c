@@ -6,7 +6,7 @@
 /*   By: ipavon-s <ipavon-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:04:14 by ipavon-s          #+#    #+#             */
-/*   Updated: 2022/10/25 13:20:12 by ipavon-s         ###   ########.fr       */
+/*   Updated: 2022/10/27 20:01:11 by ipavon-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	ft_count(char const *s, char c)
 //señala el comienzo de la palabra
 static int	ft_start(const char *s, char c, int k)
 {
-	while (s[k])
+	while (s[k] != '\0')
 	{
 		if (s[k] != c)
 			return (k);
@@ -50,7 +50,7 @@ static int	ft_start(const char *s, char c, int k)
 //señala el final de la palabra
 static int	ft_end(const char *s, char c, int k)
 {
-	while (s[k])
+	while (s[k] != '\0')
 	{
 		if (s[k] == c || s[k] == '\0')
 			return (k - 1);
@@ -72,14 +72,16 @@ char	**ft_split(char const *s, char c)
 	str = (char **) malloc ((i + 1) * sizeof(char *));
 	if (!str)
 		return (NULL);
-	str[i] = (char *) '\0';
 	i = 0;
-	while (s[start])
+	while (s[start] != '\0')
 	{
 		start = ft_start(s, c, start);
 		end = ft_end(s, c, start);
-		str[i++] = ft_substr(s, start, (end - start));
+		str[i] = ft_substr(s, start, (end - start));
+		write (1, "\n", 1);
 		start = end + 1;
+		i++;
 	}
+	str[i] = (char *) '\0';
 	return (str);
 }

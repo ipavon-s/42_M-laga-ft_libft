@@ -6,7 +6,7 @@
 /*   By: ipavon-s <ipavon-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 19:23:47 by ipavon-s          #+#    #+#             */
-/*   Updated: 2022/10/19 14:55:49 by ipavon-s         ###   ########.fr       */
+/*   Updated: 2022/10/27 17:07:54 by ipavon-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ char	*ft_strrchr(const char *s, int c)
 	char	x;
 	int		i;
 
-	i = 0;
+	i = ft_strlen(s);
 	x = (char)c;
 	str = (char *) s;
-	while (str[i] != '\n')
-		i++;
 	while (i >= 0)
 	{
 		if (str[i] == x)

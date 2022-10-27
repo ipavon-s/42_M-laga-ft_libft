@@ -7,3 +7,5 @@ Makefile funcional y libft.h con las funciones hechas hasta el momento.
 24/10/22 subida toda la parte obligatoria a falta del split, tengo que modificar Makefile.
 
 27/10/22 subida completa con errores que corregir antes de evaluación.
+
+28/10/22 correcciones de varias funciones, quedan unos pocos por corregir.

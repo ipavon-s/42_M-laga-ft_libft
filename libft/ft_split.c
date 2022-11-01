@@ -6,12 +6,13 @@
 /*   By: ipavon-s <ipavon-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:04:14 by ipavon-s          #+#    #+#             */
-/*   Updated: 2022/10/27 20:01:11 by ipavon-s         ###   ########.fr       */
+/*   Updated: 2022/11/01 12:30:16 by ipavon-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+//cuenta el numero de palabras
 static int	ft_count(char const *s, char c)
 {
 	int	i;
@@ -36,7 +37,7 @@ static int	ft_count(char const *s, char c)
 }
 
 //señala el comienzo de la palabra
-static int	ft_start(const char *s, char c, int k)
+static int	ft_start(char const *s, char c, int k)
 {
 	while (s[k] != '\0')
 	{
@@ -44,19 +45,41 @@ static int	ft_start(const char *s, char c, int k)
 			return (k);
 		k++;
 	}
-	return (0);
+	return (k);
 }
 
 //señala el final de la palabra
-static int	ft_end(const char *s, char c, int k)
+static int	ft_end(char const *s, char c, int k)
 {
 	while (s[k] != '\0')
 	{
-		if (s[k] == c || s[k] == '\0')
-			return (k - 1);
+		if (s[k] == c)
+			return (k);
 		k++;
 	}
-	return (0);
+	return (k);
+}
+
+//creación de palabras
+static char	*ft_create(char const *s, int i, int e)
+{
+	char	*word;
+	int		len;
+	int		p;
+
+	len = e - i;
+	word = (char *) malloc ((len + 1) * sizeof(char));
+	if (!word)
+		return (NULL);
+	p = 0;
+	while (i < e)
+	{
+		word[p] = s[i];
+		i++;
+		p++;
+	}
+	word[p] = '\0';
+	return (word);
 }
 
 char	**ft_split(char const *s, char c)
@@ -65,23 +88,39 @@ char	**ft_split(char const *s, char c)
 	int		i;
 	int		start;
 	int		end;
+	int		k;
 
 	start = 0;
 	end = 0;
+	if (c == '\0')
+		return ((char **) malloc (1 * sizeof(char *)));
 	i = ft_count(s, c);
 	str = (char **) malloc ((i + 1) * sizeof(char *));
-	if (!str)
+	if (!s || !str)
 		return (NULL);
-	i = 0;
-	while (s[start] != '\0')
+	k = 0;
+	while (i--)
 	{
 		start = ft_start(s, c, start);
 		end = ft_end(s, c, start);
-		str[i] = ft_substr(s, start, (end - start));
-		write (1, "\n", 1);
-		start = end + 1;
-		i++;
+		str[k] = ft_create(s, start, end);
+		start = end;
+		k++;
 	}
-	str[i] = (char *) '\0';
+	str[i] = NULL;
 	return (str);
 }
+
+/* int main (void)
+{
+	char	*s;
+	char	**array;
+
+	s = "";
+	array = ft_split(s, 'z');
+	printf ("%s", array[0]);
+	printf ("  ");
+	printf ("%c", array[0][4]);
+	return (0);
+} */
+ 

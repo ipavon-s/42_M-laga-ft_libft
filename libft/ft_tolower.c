@@ -6,18 +6,18 @@
 /*   By: ipavon-s <ipavon-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:07:17 by ipavon-s          #+#    #+#             */
-/*   Updated: 2022/10/14 12:59:42 by ipavon-s         ###   ########.fr       */
+/*   Updated: 2022/10/28 13:17:59 by ipavon-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+int	ft_tolower(int c)
 {
 	unsigned char	x;
 
 	x = (unsigned char)c;
-	if (x <= 'z' && x >= 'a')
+	if (x <= 'Z' && x >= 'A')
 		return (x + 32);
 	else
 		return (c);

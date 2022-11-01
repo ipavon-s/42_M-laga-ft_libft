@@ -6,7 +6,7 @@
 /*   By: ipavon-s <ipavon-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 17:19:21 by ipavon-s          #+#    #+#             */
-/*   Updated: 2022/10/25 13:10:15 by ipavon-s         ###   ########.fr       */
+/*   Updated: 2022/11/01 14:04:16 by ipavon-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,19 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	*str;
-	int		i;
+	long int	nb;
 
-	i = 0;
-	str = ft_itoa(n);
-	while (str[i])
+	nb = n;
+	if (n < 0)
 	{
-		write (fd, &str[i], 1);
-		i++;
+		nb = -nb;
+		write (fd, "-", 1);
 	}
+	if (nb > 9)
+	{
+		ft_putnbr_fd(nb / 10, fd);
+		ft_putchar_fd((nb % 10) + '0', fd);
+	}
+	else
+		ft_putchar_fd(nb + '0', fd);
 }

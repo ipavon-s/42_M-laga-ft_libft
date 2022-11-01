@@ -6,7 +6,7 @@
 /*   By: ipavon-s <ipavon-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:58:09 by ipavon-s          #+#    #+#             */
-/*   Updated: 2022/10/19 15:18:14 by ipavon-s         ###   ########.fr       */
+/*   Updated: 2022/10/28 16:18:11 by ipavon-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (k < i)
 		k = i;
 	str = (char *) malloc ((k - i +1) * sizeof(char));
+	if (!str)
+		return (NULL);
 	while (i < k)
 		str[s++] = s1[i++];
 	str[s] = '\0';

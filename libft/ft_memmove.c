@@ -6,7 +6,7 @@
 /*   By: ipavon-s <ipavon-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 17:52:15 by ipavon-s          #+#    #+#             */
-/*   Updated: 2022/10/14 12:58:26 by ipavon-s         ###   ########.fr       */
+/*   Updated: 2022/10/28 17:51:19 by ipavon-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 	s_dst = (char *)dst;
 	s_src = (char *)src;
+	if (!src && !dst)
+		return (0);
 	if (s_dst > s_src && (s_src + len) > s_dst)
 	{
 		s_dst = s_dst + (len -1);

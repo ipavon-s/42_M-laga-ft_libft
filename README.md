@@ -9,3 +9,5 @@ Makefile funcional y libft.h con las funciones hechas hasta el momento.
 27/10/22 subida completa con errores que corregir antes de evaluación.
 
 28/10/22 correcciones de varias funciones, quedan unos pocos por corregir.
+
+1/11/22 split y bonus siguen dando problemas, todo lo demas funciona perfectamente.

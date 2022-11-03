@@ -6,7 +6,7 @@
 /*   By: ipavon-s <ipavon-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:04:14 by ipavon-s          #+#    #+#             */
-/*   Updated: 2022/11/01 12:30:16 by ipavon-s         ###   ########.fr       */
+/*   Updated: 2022/11/03 16:27:00 by ipavon-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,6 @@ char	**ft_split(char const *s, char c)
 
 	start = 0;
 	end = 0;
-	if (c == '\0')
-		return ((char **) malloc (1 * sizeof(char *)));
 	i = ft_count(s, c);
 	str = (char **) malloc ((i + 1) * sizeof(char *));
 	if (!s || !str)
@@ -107,20 +105,6 @@ char	**ft_split(char const *s, char c)
 		start = end;
 		k++;
 	}
-	str[i] = NULL;
+	str[k] = NULL;
 	return (str);
 }
-
-/* int main (void)
-{
-	char	*s;
-	char	**array;
-
-	s = "";
-	array = ft_split(s, 'z');
-	printf ("%s", array[0]);
-	printf ("  ");
-	printf ("%c", array[0][4]);
-	return (0);
-} */
- 

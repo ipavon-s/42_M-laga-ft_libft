@@ -6,7 +6,7 @@
 /*   By: ipavon-s <ipavon-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 16:51:42 by ipavon-s          #+#    #+#             */
-/*   Updated: 2022/11/03 17:23:17 by ipavon-s         ###   ########.fr       */
+/*   Updated: 2022/11/07 12:19:10 by ipavon-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	tmp = (*lst);
 	if (!(*lst))
 		((*lst) = new);
-	if ((*lst))
+	else
 	{
 		while (tmp->next != NULL)
 			tmp = tmp->next;

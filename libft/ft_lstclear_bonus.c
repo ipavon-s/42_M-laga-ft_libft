@@ -6,7 +6,7 @@
 /*   By: ipavon-s <ipavon-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 13:03:09 by ipavon-s          #+#    #+#             */
-/*   Updated: 2022/10/27 14:07:00 by ipavon-s         ###   ########.fr       */
+/*   Updated: 2022/11/07 12:48:40 by ipavon-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,15 @@
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*aux;
-	t_list	*erase;
 
-	aux = *lst;
-	while (aux)
+	if (*lst)
 	{
-		erase = aux->next;
-		del(aux->content);
-		free(aux);
-		aux = erase;
+		while (*lst)
+		{
+			aux = (*lst)->next;
+			del((*lst)->content);
+			free(*lst);
+			(*lst) = aux;
+		}
 	}
 }
